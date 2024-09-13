@@ -4,9 +4,7 @@ class robot
     String name;
     String type;
     String model;
-    
     String year;
-    
   
     robot(this.name, this.type, this.model, this.year);
  }

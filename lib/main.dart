@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterlearningproject/Domain/Robot.dart';
-import 'package:flutterlearningproject/Widget/Robots/robotlist.dart';
+import 'package:flutterlearningproject/Domain/robot.dart';
+import 'package:flutterlearningproject/Widget/Robots/RobotListstatefull.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const String appTitle = 'Flutter layout demo';
 
-   
+    List<robot_nettoyeur> initialRobots = [
+    robot_nettoyeur('Robo1', 'Model A', '2020'),
+    robot_nettoyeur('Robo2', 'Model B', '2021'),
+    robot_nettoyeur('Robo3', 'Model C', '2022'),
+  ];
     return MaterialApp(
       title: 'Flutter Demo',
       // theme: ThemeData(
@@ -38,12 +42,8 @@ class MyApp extends StatelessWidget {
       // ),
       home:  Scaffold(
         appBar: AppBar(title: const Text('Robot List')),
-        body: RobotList(
-          robotnettoyeurList: <robot_nettoyeur>[
-            robot_nettoyeur('Robot 1', 'Model 1',  '2021'),
-            robot_nettoyeur('Robot 2', 'Model 2',  '2022'),
-            robot_nettoyeur('Robot 3', 'Model 3',  '2023'),
-          ],
+        body: RobotListStateFull(
+          robotnettoyeurList: initialRobots,
         ),
 
       )
