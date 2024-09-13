@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterlearningproject/Domain/Robot.dart';
 import 'package:flutterlearningproject/Widget/Robots/robotlist.dart';
-import 'package:flutterlearningproject/Widget/positionnement/etape1.dart';
-import 'package:flutterlearningproject/Widget/positionnement/etape2.dart';
-import 'package:flutterlearningproject/Widget/positionnement/etape3.dart';
-import 'package:flutterlearningproject/Widget/positionnement/etape4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +36,17 @@ class MyApp extends StatelessWidget {
       //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       //   useMaterial3: true,
       // ),
-      home: Etape3()
+      home:  Scaffold(
+        appBar: AppBar(title: const Text('Robot List')),
+        body: RobotList(
+          robotnettoyeurList: <robot_nettoyeur>[
+            robot_nettoyeur('Robot 1', 'Model 1',  '2021'),
+            robot_nettoyeur('Robot 2', 'Model 2',  '2022'),
+            robot_nettoyeur('Robot 3', 'Model 3',  '2023'),
+          ],
+        ),
+
+      )
       );
     
   }

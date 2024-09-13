@@ -21,5 +21,5 @@ mixin robot_marcher
 
 class robot_nettoyeur extends robot with robot_marcher
  {
-    robot_nettoyeur(String name, String model, String year) : super( name, "nettoyer", model, year);
+    robot_nettoyeur(String name, String model, String year) : super( name, "nettoyeur", model, year);
  }
