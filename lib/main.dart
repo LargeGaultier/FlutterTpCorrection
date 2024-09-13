@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterlearningproject/Domain/robot.dart';
+import 'package:flutterlearningproject/Widget/Robots/RobotListAsync.dart';
 import 'package:flutterlearningproject/Widget/Robots/RobotListstatefull.dart';
 
 void main() {
@@ -41,12 +42,12 @@ class MyApp extends StatelessWidget {
       //   useMaterial3: true,
       // ),
       home:  Scaffold(
-        appBar: AppBar(title: const Text('Robot List')),
-        body: RobotListStateFull(
-          robotnettoyeurList: initialRobots,
+        appBar: AppBar(title: const Text('Async Robot List')),
+        body: RobotListScreenAsync()
+        
         ),
 
-      )
+      
       );
     
   }

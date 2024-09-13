@@ -31,7 +31,6 @@ class _RobotListState extends State<RobotListStateFull> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Robot List')),
       body: Column(
         children: [
           Expanded(
