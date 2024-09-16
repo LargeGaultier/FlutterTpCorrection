@@ -1,8 +1,10 @@
 import 'package:flutterlearningproject/Domain/robot.dart';
+import 'package:flutterlearningproject/Persistence/DataBaseHelpterInjection.dart';
+import 'package:flutterlearningproject/Persistence/DatabaseHelper.Dart';
 
 class RobotService {
 
- List<robot_nettoyeur> robotList = [
+  List<robot_nettoyeur> robotList = [
     robot_nettoyeur('Robo1', 'Type A', '2020'),
     robot_nettoyeur('Robo2', 'Type B', '2021'),
   ];
@@ -37,4 +39,28 @@ class RobotService {
    void addRobot(robot_nettoyeur robot) {
     robotList.add(robot);  // Ajoute un robot à la liste
   }
+}
+
+class RobotServiceInjection {
+
+final DatabaseHelperInjection dbHelper;
+
+  RobotServiceInjection(this.dbHelper);
+
+  Future<void> addRobot(String name, String type, String year) async {
+    await dbHelper.insertRobot({
+      'name': name,
+      'type': type,
+      'year': year,
+    });
+  }
+
+  Future<void> deleteRobot(int id) async {
+    await dbHelper.delete(id);
+  }
+
+  Future<List<Map<String, dynamic>>> getAllRobots() async {
+    return await dbHelper.queryAllRows();
+  }
+
 }

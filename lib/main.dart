@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutterlearningproject/Domain/robot.dart';
-import 'package:flutterlearningproject/Widget/Capteurs/CameraPage.dart';
+import 'package:flutterlearningproject/Persistence/DataBaseHelpterInjection.dart';
+import 'package:flutterlearningproject/Widget/Robots/RobotListInjection.dart';
+import 'package:flutterlearningproject/Persistence/DatabaseHelper.Dart';
+import 'package:flutterlearningproject/Service/RobotService.dart';
 import 'package:flutterlearningproject/Widget/Robots/RobotDbList.dart';
 import 'package:flutterlearningproject/Widget/Robots/RobotListAsync.dart';
 import 'package:flutterlearningproject/Widget/Robots/RobotListWithAdd.dart';
@@ -8,11 +11,19 @@ import 'package:flutterlearningproject/Widget/Robots/RobotListstatefull.dart';
 import 'package:flutterlearningproject/Widget/Robots/robotStream.dart';
 import 'package:flutterlearningproject/Widget/backendinteraction/CarMakesScreen.dart';
 import 'package:flutterlearningproject/Widget/navigation/HomeScreen.dart';
-import 'package:camera/camera.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
  
-      runApp(MyApp());
+      runApp( MultiProvider(
+      providers: [
+        Provider<DatabaseHelperInjection>(create: (_) => DatabaseHelperInjection()), // Injection de DatabaseHelper
+        ProxyProvider<DatabaseHelperInjection, RobotServiceInjection>(
+          update: (_, dbHelper, __) => RobotServiceInjection(dbHelper), // Injection de RobotService
+        ),
+      ],
+      child : MyApp())
+      );
 
 //  runApp(const MyApp());
 
@@ -56,7 +67,7 @@ class MyApp extends StatelessWidget {
       // ),
       home:  Scaffold(
         appBar: AppBar(title: const Text('Async Robot List')),
-        body: RobotDbList()
+        body: RobotListInjection()
         )
         
         );
