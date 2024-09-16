@@ -1,30 +1,33 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:flutterlearningproject/main.dart';
+import 'package:flutterlearningproject/Domain/robot.dart'; // Assurez-vous d'utiliser le bon chemin d'import
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  group('robot_nettoyeur tests', () {
+    test('Initial isCleaning should be false', () {
+      final robot = robot_nettoyeur('Robo1', 'Model A', '2020');
+      
+      // Vérifie que la propriété isCleaning est false au début
+      expect(robot.isCleaning, isFalse);
+    });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    test('Clean method should set isCleaning to true', () {
+      final robot = robot_nettoyeur('Robo1', 'Model A', '2020');
+      
+      // Appelle la méthode Clean et vérifie que isCleaning devient true
+      robot.Clean();
+      expect(robot.isCleaning, isTrue);
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    test('StopCleaning method should set isCleaning to false', () {
+      final robot = robot_nettoyeur('Robo1', 'Model A', '2020');
+      
+      // Appelle la méthode Clean, puis StopCleaning
+      robot.Clean();
+      robot.StopCleaning();
+      
+      // Vérifie que isCleaning est false après l'appel de StopCleaning
+      expect(robot.isCleaning, isFalse);
+    });
   });
 }

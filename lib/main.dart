@@ -11,8 +11,8 @@ import 'package:flutterlearningproject/Widget/navigation/HomeScreen.dart';
 import 'package:camera/camera.dart';
 
 void main() async {
-    final cameras = await availableCameras();
-      runApp(MyApp(cameras: cameras));
+ 
+      runApp(MyApp());
 
 //  runApp(const MyApp());
 
@@ -20,9 +20,9 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   
-  final List<CameraDescription> cameras;
+ 
   // This widget is the root of your application.
-  const MyApp({super.key, required this.cameras});
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     const String appTitle = 'Flutter layout demo';
@@ -56,14 +56,11 @@ class MyApp extends StatelessWidget {
       // ),
       home:  Scaffold(
         appBar: AppBar(title: const Text('Async Robot List')),
-        body: CameraPage(cameras: cameras)
+        body: RobotDbList()
+        )
         
-        ),
-
-      
-      );
-    
-  }
+        );
+    }
 }
 
 class MyHomePage extends StatefulWidget {

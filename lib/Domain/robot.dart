@@ -18,6 +18,18 @@ mixin robot_marcher
  }
 
 class robot_nettoyeur extends robot with robot_marcher
- {
+ { 
+    bool isCleaning = false;
     robot_nettoyeur(String name, String model, String year) : super( name, "nettoyeur", model, year);
+
+    void Clean() {
+    isCleaning = true;
+    print('$name est en cours de nettoyage.');
+  }
+
+  // Méthode pour arrêter le nettoyage
+  void StopCleaning() {
+    isCleaning = false;
+    print('$name a arrêté le nettoyage.');
+  }
  }
