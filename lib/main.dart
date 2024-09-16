@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterlearningproject/Domain/robot.dart';
+import 'package:flutterlearningproject/Widget/Capteurs/CameraPage.dart';
 import 'package:flutterlearningproject/Widget/Robots/RobotDbList.dart';
 import 'package:flutterlearningproject/Widget/Robots/RobotListAsync.dart';
 import 'package:flutterlearningproject/Widget/Robots/RobotListWithAdd.dart';
@@ -7,24 +8,31 @@ import 'package:flutterlearningproject/Widget/Robots/RobotListstatefull.dart';
 import 'package:flutterlearningproject/Widget/Robots/robotStream.dart';
 import 'package:flutterlearningproject/Widget/backendinteraction/CarMakesScreen.dart';
 import 'package:flutterlearningproject/Widget/navigation/HomeScreen.dart';
+import 'package:camera/camera.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+    final cameras = await availableCameras();
+      runApp(MyApp(cameras: cameras));
+
+//  runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  
+  final List<CameraDescription> cameras;
   // This widget is the root of your application.
+  const MyApp({super.key, required this.cameras});
   @override
   Widget build(BuildContext context) {
     const String appTitle = 'Flutter layout demo';
-
+    
     List<robot_nettoyeur> initialRobots = [
     robot_nettoyeur('Robo1', 'Model A', '2020'),
     robot_nettoyeur('Robo2', 'Model B', '2021'),
     robot_nettoyeur('Robo3', 'Model C', '2022'),
   ];
+  
     return MaterialApp(
       title: 'Flutter Demo',
       // theme: ThemeData(
@@ -48,7 +56,7 @@ class MyApp extends StatelessWidget {
       // ),
       home:  Scaffold(
         appBar: AppBar(title: const Text('Async Robot List')),
-        body: RobotDbList()
+        body: CameraPage(cameras: cameras)
         
         ),
 
