@@ -6,7 +6,7 @@ class Etape4  extends StatelessWidget
   Widget build(BuildContext context)
   {
     return  Scaffold(
-        appBar: AppBar(title: Text('Expanded and Flexible Example')),
+        appBar: AppBar(title: const Text('Expanded and Flexible Example')),
         body: Column(
           children: [
             Row(
@@ -15,26 +15,26 @@ class Etape4  extends StatelessWidget
                   child: Container(
                     color: Colors.red,
                     height: 100,
-                    child: Center(child: Text('Expanded 1')),
+                    child: const Center(child: Text('Expanded 1')),
                   ),
                 ),
                 Expanded(
                   child: Container(
                     color: Colors.green,
                     height: 100,
-                    child: Center(child: Text('Expanded 2')),
+                    child: const Center(child: Text('Expanded 2')),
                   ),
                 ),
                 Expanded(
                   child: Container(
                     color: Colors.blue,
                     height: 100,
-                    child: Center(child: Text('Expanded 3')),
+                    child: const Center(child: Text('Expanded 3')),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               children: [
                 Flexible(

@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Etape 2',
+          label: 'Etape 2',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),

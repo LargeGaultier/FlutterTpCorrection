@@ -4,12 +4,12 @@ class Etape3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Align Example')),
+        appBar: AppBar(title: const Text('Align Example')),
         body: Container(
           width: 300,
           height: 300,
           color: Colors.grey[300],
-          child: Stack(
+          child: const Stack(
             children: [
               Align(
                 alignment: Alignment.topLeft,
